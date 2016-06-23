@@ -1,0 +1,27 @@
+//*******************************************************************************************************
+//*******************************************************************************************************
+//
+//										16 bit memory access 
+//
+//*******************************************************************************************************
+//*******************************************************************************************************
+
+01 			10 	"LD BC,@2@1"	c = fetch();b = fetch()
+11 			10 	"LD DE,@2@1"	e = fetch();d = fetch()
+21 			10 	"LD HL,@2@1"	l = fetch();h = fetch()
+31 			10 	"LD SP,@2@1"	FETCHWORD();sp = temp16
+
+2A 			16 	"LD HL,(@2@1)"	FETCHWORD();l = readMemory(temp16);h = readMemory(temp16+1)
+22 			16 	"LD (@2@1),HL"	FETCHWORD();writeMemory(temp16,l);writeMemory(temp16+1,h)
+
+F9 			6 	"LD SP,HL"		sp = HL
+
+C5 			11 	"PUSH BC"		PUSH(b);PUSH(c)
+D5 			11 	"PUSH DE"		PUSH(d);PUSH(e)
+E5 			11 	"PUSH HL"		PUSH(h);PUSH(l)
+F5 			11 	"PUSH AF"		PUSH(a);PUSH(constructF())
+
+C1 			10 	"POP BC"		c = POP();b = POP()
+D1 			10 	"POP DE"		e = POP();d = POP()
+E1 			10 	"POP HL"		l = POP();h = POP()
+F1 			10 	"POP AF"		explodeF(POP());a = POP()

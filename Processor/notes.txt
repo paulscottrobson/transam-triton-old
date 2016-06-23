@@ -1,0 +1,11 @@
+
+
+@N		offset / step 					Register name : 	B,C,D,E,H,L,(HL),A
+@R 		offset / step 					Code to access register above (except (HL) write). accessing (HL) gives 3 extra T states
+@B		offset / step 					value.
+@C 		offset / step 					Condition (NZ,Z,NC,C,PO,PE,P,M)
+@T 		offset / step 					Code to check condition.
+@O 		offset / step 					hex 2 byte equivalent of n x 8.
+
+@1,@2 	1st and second operand byte
+
